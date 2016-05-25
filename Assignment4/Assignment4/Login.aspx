@@ -38,8 +38,9 @@
 									<span>Password<label>*</label></span>
                                     <asp:TextBox ID="tbPassword" runat="server"></asp:TextBox>
 								</div>
+                            <asp:Label ID="lblError" runat="server" Text=""></asp:Label><br />
 								<a class="forgot" href="#">Forgot Your Password?</a>
-                                <asp:Button ID="btnLogin" runat="server" Text="Login" />
+                                <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" />
 						</div>
 						<div class="clearfix"> </div>
 					</div>

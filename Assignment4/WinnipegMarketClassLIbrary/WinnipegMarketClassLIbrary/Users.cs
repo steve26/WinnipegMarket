@@ -5,6 +5,8 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using DAL_Project;
 
 namespace WinnipegMarketClassLIbrary
 {
@@ -33,12 +35,26 @@ namespace WinnipegMarketClassLIbrary
             this.isAdmin = IsAdmin;
         }
 
-        public void Login(string email, string password)
+        public static Users Login(string email, string password)
         {
-            DAL d = new DAL(ConfigurationManager.ConnectionStrings["dbWinnipegMarket"].ConnectionString);
+            Users x = null;
+            DAL d = new DAL(ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString);
+
             d.AddParam("Email", email);
             d.AddParam("Password", password);
-            d.ExecuteProcedure("spLogin");
+
+            DataSet ds = d.ExecuteProcedure("spLogin");
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                x.Address = (string)ds.Tables[0].Rows[0]["Address"];
+                x.Email = (string)ds.Tables[0].Rows[0]["Email"];
+                x.FirstName = (string)ds.Tables[0].Rows[0]["FirstName"];
+                x.Id = Convert.ToInt32(ds.Tables[0].Rows[0]["Id"]);
+                x.isAdmin = Convert.ToBoolean(ds.Tables[0].Rows[0]["Id"]);
+                x.LastName = (string)ds.Tables[0].Rows[0]["LastName"];
+                x.Password = (string)ds.Tables[0].Rows[0]["Password"];
+            }
+            return x;
         }
         public void AddUser()
         {
