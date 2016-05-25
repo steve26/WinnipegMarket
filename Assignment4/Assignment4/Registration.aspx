@@ -25,7 +25,6 @@
                     <div class="reg">
                         <p>Welcome, please enter the following details to continue.</p>
                         <p>If you have previously registered with us, <a href="Login.php">click here</a></p>
-                        <form>
                             <ul>
                                 <li class="text-info">First Name: </li>
                                 <li><input type="text" value="" name="tbFirstName"></li>
@@ -52,7 +51,6 @@
                             </ul>
                             <input type="submit" value="REGISTER NOW" name="btnRegister">
                             <p class="click">By clicking this button, you are agree to my  <a href="#">Policy Terms and Conditions.</a></p>
-                        </form>
                     </div>
                 </div>
                 <div class="reg-right">
