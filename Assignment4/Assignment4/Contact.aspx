@@ -31,15 +31,15 @@
 			</div>
 			<form>
 				<div class="contact-left">
-					<input type="text" placeholder="Name" required>
-					<input type="text" placeholder="E-mail" required>
-					<input type="text" placeholder="Subject" required>
+					<asp:TextBox ID="tbName" Text="Enter Name" runat="server" />
+					<asp:TextBox ID="tbEmail" Text="Enter Email" runat="server" />
+					<asp:TextBox ID="tbSubject" Text="Enter Subject" runat="server" />
 				</div>
 				<div class="contact-right">
-					<textarea placeholder="Message" required></textarea>
+					<asp:TextBox ID="tbMessage" Text="Enter Message" runat="server" />
 				</div>
 				<div class="clearfix"></div>
-				<input type="submit" value="SUBMIT">
+				<asp:Button ID="btnSend" runat="server" Text="Send" Height="48px" OnClick="btnSend_Click" Width="156px"/>
 			</form>
 		</div>
 	</div>

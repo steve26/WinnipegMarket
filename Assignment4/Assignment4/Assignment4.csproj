@@ -102,6 +102,7 @@
     <Content Include="web\typography.html" />
     <Content Include="web\w3layouts-License.txt" />
     <Content Include="master.Master" />
+    <Content Include="WinnipegMarketDatabase.sql" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
