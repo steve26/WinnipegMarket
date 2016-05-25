@@ -18,13 +18,14 @@ namespace WinnipegMarketClassLIbrary
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }
+        public string PhoneNumber { get; set; }
         public bool isAdmin { get; set; } // 1 = Y, 0 = N
 
         public Users()
         {
 
         }
-        public Users(int Id, string Email, string Password, string FirstName, string LastName, string Address, bool IsAdmin)
+        public Users(int Id, string Email, string Password, string FirstName, string LastName, string Address, bool IsAdmin, string PhoneNumber)
         {
             this.Id = Id;
             this.Email = Email;
@@ -33,6 +34,7 @@ namespace WinnipegMarketClassLIbrary
             this.LastName = LastName;
             this.Address = Address;
             this.isAdmin = IsAdmin;
+            this.PhoneNumber = PhoneNumber;
         }
 
         public static Users Login(string email, string password)
@@ -53,6 +55,7 @@ namespace WinnipegMarketClassLIbrary
                 x.isAdmin = Convert.ToBoolean(ds.Tables[0].Rows[0]["Id"]);
                 x.LastName = (string)ds.Tables[0].Rows[0]["LastName"];
                 x.Password = (string)ds.Tables[0].Rows[0]["Password"];
+                x.PhoneNumber = (string)ds.Tables[0].Rows[0]["PhoneNumber"];
             }
             return x;
         }

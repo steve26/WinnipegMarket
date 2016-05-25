@@ -25,17 +25,16 @@ namespace Assignment4
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            Users s = new Users();
-            s.Email = tbName.Text;
-            s.Password = tbPassword.Text;
-            s.Login(s.Email, s.Password);
-            if (true)
+            Users.Login(tbName.Text, tbPassword.Text);
+            Users c = (Users)Session["User"];
+
+            if (Session["User"] == null)
             {
-                Response.Redirect("Products.aspx");
+                lblError.Text = "Invalid login, Please try again.";
             }
             else
             {
-                lblError.Text = "Incorrect Username or password. Try again.";
+                Response.Redirect("Products.aspx");
             }
         }
     }
