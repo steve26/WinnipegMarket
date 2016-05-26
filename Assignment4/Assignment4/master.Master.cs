@@ -10,6 +10,7 @@ using DAL_Project;
 using WinnipegMarketClassLIbrary;
 using System.Net.Mail;
 
+
 namespace Assignment4
 {
     public partial class master : System.Web.UI.MasterPage
@@ -41,6 +42,7 @@ namespace Assignment4
             client.Credentials = new System.Net.NetworkCredential("winnipegmarketproject@gmail.com", "SD22WinnipegMarket");
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.Send(msg);
+            tbEmail.Text = "";
         }
     }
 }
