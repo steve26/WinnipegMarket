@@ -77,11 +77,30 @@ INSERT INTO tbBrands VALUES
 
 INSERT INTO tbStores VALUES
 ('Walmart','123 SomeWhere Street R3C 1Y2'),
-('Petsmart','123 SomeWhereElse Street R3C 1Y2')
+('Petsmart','123 SomeWhereElse Street R3C 1Y2'),
+('Sephora','123 SomeWhereElse Street R3C 1Y2'),
+('Canadian Tire','123 SomeWhereElse Street R3C 1Y2'),
+('Chatters','123 SomeWhereElse Street R3C 1Y2'),
+('Toys R Us','123 SomeWhereElse Street R3C 1Y2'),
+('Indigo','123 SomeWhereElse Street R3C 1Y2')
+
+--Pro_Name VARCHAR(MAX),
+--	Price SMALLMONEY,
+--	Product_Image VARCHAR(MAX),
+--	Brand INT FOREIGN KEY REFERENCES tbBrands(Brand_ID),
+--	Description VARCHAR(MAX),
+--	Category INT FOREIGN KEY REFERENCES tbCategories(Cat_ID),
+--	Store INT FOREIGN KEY REFERENCES tbStores(Store_ID)
+select * from tbCategories
+select * from tbStores
+select * from tbBrands
 
 INSERT INTO tbProducts VALUES
-('Acer Laptop',450.00,'Acer_Laptop.jpg',6,'Portable Computer',1,1),
-('Leash',12.00,'IMAGE2',1,'Used to walk animals',8,1)
+-- Electronics cat 1
+('Laptop',400.00,'laptop.jpg',6,'A small computer for your lap.',1,1),
+('Cellphone',600.00,'cell-phone.png',6,'A small computer for your lap.',1,1)
+
+
 
 INSERT INTO tbUsers VALUES
 ('RandomCustomer','password1','John','Doe','John_Doe@email.com',0),
