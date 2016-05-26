@@ -29,37 +29,37 @@
                             <ul>
                                 <li class="text-info">First Name: </li>
                                 <li>
-                                    <asp:TextBox ID="tbFirst" runat="server"></asp:TextBox></li>
+                                    <asp:TextBox ID="tbFirst" required="required" runat="server"></asp:TextBox></li>
                             </ul>
                             <ul>
                                 <li class="text-info">Last Name: </li>
                                 <li>
-                                    <asp:TextBox ID="tbLast" runat="server"></asp:TextBox></li>
+                                    <asp:TextBox ID="tbLast" required="required" runat="server"></asp:TextBox></li>
                             </ul>
                             <ul>
                                 <li class="text-info">Email: </li>
                                 <li>
-                                    <asp:TextBox ID="tbEmail" runat="server"></asp:TextBox></li>
+                                    <asp:TextBox ID="tbEmail" required="required" runat="server"></asp:TextBox></li>
                             </ul>
                             <ul>
                                 <li class="text-info">Password: </li>
                                 <li>
-                                    <asp:TextBox ID="tbPassword" runat="server"></asp:TextBox></li>
+                                    <asp:TextBox ID="tbPassword" required="required" runat="server"></asp:TextBox></li>
                             </ul>
                             <ul>
                                 <li class="text-info">Re-enter Password:</li>
                                 <li>
-                                    <asp:TextBox ID="tbPassword2" runat="server"></asp:TextBox></li>
+                                    <asp:TextBox ID="tbPassword2" required="required" runat="server"></asp:TextBox></li>
                             </ul>
                             <ul>
                                 <li class="text-info">Address:</li>
                                 <li>
-                                    <asp:TextBox ID="tbAddress" runat="server"></asp:TextBox></li>
+                                    <asp:TextBox ID="tbAddress" required="required" runat="server"></asp:TextBox></li>
                             </ul>
                             <ul>
                                 <li class="text-info">Mobile Number:</li>
                                 <li>
-                                    <asp:TextBox ID="tbPhone" runat="server"></asp:TextBox></li>
+                                    <asp:TextBox ID="tbPhone" required="required" runat="server"></asp:TextBox></li>
                             </ul>
                             <asp:Label ID="lblError" runat="server" Text=""></asp:Label><br />
                             <asp:Button ID="btnRegister" runat="server" Text="Register Now" OnClick="btnRegister_Click" />
