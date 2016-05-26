@@ -29,7 +29,6 @@
 			<div class="contact-info">
 				<h3>CONTACT FORM</h3>
 			</div>
-			<form>
 				<div class="contact-left">
 					<asp:TextBox ID="tbName" Text="Enter Name" runat="server" />
 					<asp:TextBox ID="tbEmail" Text="Enter Email" runat="server" />
@@ -39,8 +38,7 @@
 					<asp:TextBox ID="tbMessage" Text="Enter Message" runat="server" />
 				</div>
 				<div class="clearfix"></div>
-				<asp:Button ID="btnSend" runat="server" Text="Send" Height="48px" OnClick="btnSend_Click" Width="156px"/>
-			</form>
+				<asp:Button ID="btnSend" runat="server" Text="Send" Height="48px" OnClick="btnSend_Click" Width="156px"/>	
 		</div>
 	</div>
 </div>
