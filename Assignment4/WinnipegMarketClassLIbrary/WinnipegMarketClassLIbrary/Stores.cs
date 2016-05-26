@@ -24,7 +24,7 @@ namespace WinnipegMarketClassLIbrary
         }
         public void GetAllStores()
         {
-            DAL d = new DAL(ConfigurationManager.ConnectionStrings["dbWinnipegMarket"].ConnectionString);
+            DAL d = new DAL(ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString);
             d.ExecuteProcedure("spGetStoresByID");
         }
     }

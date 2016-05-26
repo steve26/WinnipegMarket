@@ -19,100 +19,46 @@
                 </ul>
                 <div class="clearfix"></div>
 			   </div>
-			 <h2>MY SHOPPING BAG (3)</h2>
+			 <h2>MY SHOPPING BAG (<asp:Label ID="lblNumber" runat="server" Text=""></asp:Label>)</h2>
 		<div class="cart-gd">
-				<script>$(document).ready(function(c) {
-					$('.close1').on('click', function(c){
-						$('.cart-header').fadeOut('slow', function(c){
-							$('.cart-header').remove();
-						});
-						});	  
-					});
-			   </script>
+				
 			 <div class="cart-header">
 				 <div class="close1"> </div>
 				 <div class="cart-sec simpleCart_shelfItem">
 						<div class="cart-item cyc">
-							 <img src="web/images/l1.jpg" class="img-responsive" alt="">
+							 <asp:Label ID="lblErrorMsg" runat="server" Text=""></asp:Label><br />
+    <asp:Button ID="btnRemoveAll" runat="server" Text="Remove All" OnClick="btnRemoveAll_Click" /><br />
+    <asp:GridView ID="gvCart" runat="server" OnRowCommand="gvCart_RowCommand" OnRowEditing="gvCart_RowEditing" DataKeyNames="ProductID" OnRowDataBound="gvCart_RowDataBound" ShowFooter="true"  >
+        <Columns>
+            <asp:ButtonField CommandName="del" ButtonType="Button" Text="remove" />
+            <asp:ButtonField CommandName="edit" ButtonType="Button" Text="Update" />
+        </Columns>
+    </asp:GridView>
+    <asp:Button ID="btnCheckOut" runat="server" Text="Check Out" OnClick="btnCheckOut_Click" /><br /><br />
+    <asp:Panel ID="pnlQuantity" runat="server" Visible="false">
+        <asp:DropDownList ID="ddlQuantity" runat="server">
+                    <asp:ListItem Text="1" />
+                    <asp:ListItem Text="2" />
+                    <asp:ListItem Text="3" />
+                    <asp:ListItem Text="4" />
+                    <asp:ListItem Text="5" />
+                    <asp:ListItem Text="6" />
+                    <asp:ListItem Text="7" />
+                    <asp:ListItem Text="8" />
+                    <asp:ListItem Text="9" />
+                    <asp:ListItem Text="10" />
+                </asp:DropDownList>
+        <asp:Button ID="btnUpdate" runat="server" Text="UpdateQuantity" OnClick="btnUpdate_Click" /></asp:Panel>
 						</div>
-					   <div class="cart-item-info">
-						<h3><a href="#"> Lorem Ipsum is not simply </a><span>Pickup time:</span></h3>
-						<ul class="qty">
-							<li><p>Min. order value:</p></li>
-							<li><p>FREE delivery</p></li>
-						</ul>
-							 <div class="delivery">
-							 <p>Service Charges : $10.00</p>
-							 <span>Delivered in 1-1:30 hours</span>
-							 <div class="clearfix"></div>
-				        </div>	
+					   
 					   </div>
 					   <div class="clearfix"></div>
 											
-				  </div>
+				  
 			 </div>
-			 <script>$(document).ready(function(c) {
-					$('.close2').on('click', function(c){
-							$('.cart-header2').fadeOut('slow', function(c){
-						$('.cart-header2').remove();
-					});
-					});	  
-					});
-			 </script>
-			 <div class="cart-header2">
-				 <div class="close2"> </div>
-				  <div class="cart-sec simpleCart_shelfItem">
-						<div class="cart-item cyc">
-							 <img src="web/images/l2.jpg" class="img-responsive" alt="">
-						</div>
-					   <div class="cart-item-info">
-						<h3><a href="#"> Lorem Ipsum is not simply </a><span>Pickup time:</span></h3>
-						<ul class="qty">
-							<li><p>Min. order value:</p></li>
-							<li><p>FREE delivery</p></li>
-						</ul>
-							 <div class="delivery">
-							 <p>Service Charges : $10.00</p>
-							 <span>Delivered in 3-3:30 hours</span>
-							 <div class="clearfix"></div>
-				        </div>	
-					   </div>
-					   <div class="clearfix"></div>
-											
-				  </div>
-			  </div>
-			  <script>$(document).ready(function(c) {
-					$('.close3').on('click', function(c){
-							$('.cart-header3').fadeOut('slow', function(c){
-						$('.cart-header3').remove();
-					});
-					});	  
-					});
-			 </script>
-			  <div class="cart-header3">
-				 <div class="close3"> </div>
-				  <div class="cart-sec simpleCart_shelfItem">
-						<div class="cart-item cyc">
-							 <img src="web/images/l3.jpg" class="img-responsive" alt="">
-						</div>
-					   <div class="cart-item-info">
-						<h3><a href="#"> Lorem Ipsum is not simply </a><span>Pickup time:</span></h3>
-						<ul class="qty">
-							<li><p>Min. order value:</p></li>
-							<li><p>FREE delivery</p></li>
-						</ul>
-							 <div class="delivery">
-							 <p>Service Charges : $10.00</p>
-							 <span>Delivered On Tomorrow</span>
-							 <div class="clearfix"></div>
-				        </div>	
-					   </div>
-					   <div class="clearfix"></div>
-											
-				  </div>
+			 
 			  </div>
 		</div>
 	</div>
-</div>
 
 </asp:Content>

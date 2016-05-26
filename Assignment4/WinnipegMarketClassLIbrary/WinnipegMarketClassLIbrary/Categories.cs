@@ -23,7 +23,7 @@ namespace WinnipegMarketClassLIbrary
         }
         public void spGetCategories()
         {
-            DAL d = new DAL(ConfigurationManager.ConnectionStrings["dbWinnipegMarket"].ConnectionString);
+            DAL d = new DAL(ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString);
             d.ExecuteProcedure("spGetCategoriesById");
         }
     }

@@ -62,7 +62,7 @@ namespace WinnipegMarketClassLIbrary
         }
         public void AddUser()
         {
-            DAL d = new DAL(ConfigurationManager.ConnectionStrings["dbWinnipegMarket"].ConnectionString);
+            DAL d = new DAL(ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString);
             d.AddParam("Email", Email);
             d.AddParam("Password", Password);
             d.AddParam("First_Name", FirstName);
@@ -72,13 +72,13 @@ namespace WinnipegMarketClassLIbrary
         }
         public void DeleteUser(int Id)
         {
-            DAL d = new DAL(ConfigurationManager.ConnectionStrings["dbWinnipegMarket"].ConnectionString);
+            DAL d = new DAL(ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString);
             d.AddParam("User_ID", Id);
             d.ExecuteProcedure("spDeleteUsers");
         }
         public void UpdateUser()
         {
-            DAL d = new DAL(ConfigurationManager.ConnectionStrings["dbWinnipegMarket"].ConnectionString);
+            DAL d = new DAL(ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString);
             d.AddParam("Email", Email);
             d.AddParam("Password", Password);
             d.AddParam("First_Name", FirstName);

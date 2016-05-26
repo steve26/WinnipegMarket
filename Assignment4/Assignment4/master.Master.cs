@@ -34,6 +34,16 @@ namespace Assignment4
                     lblGreeting.Text = "Welcome " + x.FirstName + " " + x.LastName;
                     
                 }
+                if (Session["masterCartPrice"]==null)
+                {
+                    lblCost.Text = "$0.00";
+                    lblCount.Text = "0";
+                }
+                else
+                {
+                    lblCost.Text = "$" + Session["masterCartPrice"].ToString();
+                    lblCount.Text = Session["cartItems"].ToString();
+                }
             }
         }
 

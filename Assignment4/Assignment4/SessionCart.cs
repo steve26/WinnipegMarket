@@ -10,6 +10,7 @@ namespace Assignment4
     {
         public static readonly ShoppingCart Instance;
 
+
        static SessionCart()
         {
             HttpContext.Current.Session["ShoppingCart"] = HttpContext.Current.Session["ShoppingCart"] ?? new ShoppingCart();
@@ -19,6 +20,11 @@ namespace Assignment4
         public static void AbandonCart()
         {
             Instance.Cart.Clear();
+        }
+        public static int Count()
+        {
+            int x = Instance.Cart.Count();
+            return x;
         }
     }
 }

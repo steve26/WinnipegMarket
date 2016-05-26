@@ -20,7 +20,7 @@ namespace WinnipegMarketClassLIbrary
         }
         public void GetAllBrands()
         {
-            DAL d = new DAL(ConfigurationManager.ConnectionStrings["dbWinnipegMarket"].ConnectionString);
+            DAL d = new DAL(ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString);
             d.ExecuteProcedure("spGetBrandsByID");
         }
     }
