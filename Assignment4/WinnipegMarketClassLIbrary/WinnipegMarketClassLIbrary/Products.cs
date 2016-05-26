@@ -10,7 +10,7 @@ using System.Data;
 namespace WinnipegMarketClassLIbrary
 {
 
-    public class ProductClass
+    public class Products
     {
         public int Id { get; set; }
         public string Product { get; set; }
@@ -26,7 +26,7 @@ namespace WinnipegMarketClassLIbrary
             d.ExecuteProcedure("spSearchProducts");
         }
 
-        public void SearchProductsByID(int Id)
+        public void GetProductsByID(int Id)
         {
             DAL d = new DAL(ConfigurationManager.ConnectionStrings["dbWinnipegMarket"].ConnectionString);
             d.AddParam("Pro_ID", Id);

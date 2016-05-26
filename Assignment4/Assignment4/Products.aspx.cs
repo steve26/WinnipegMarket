@@ -20,14 +20,43 @@ namespace Assignment4
             if(!IsPostBack)
             {
                 DisplayProducts();
+                NewProductList();
+                BrandList();
             }
+        }
+
+        private void BrandList()
+        {
+            DAL d = new DAL(conn);
+            dlBrands.DataSource = d.ExecuteProcedure("spGetBrandsByID");
+            dlBrands.DataBind();
+        }
+
+        private void NewProductList()
+        {
+            DAL d = new DAL(conn);
+            dlNewProducts.DataSource = d.ExecuteProcedure("spNewProducts");
+            dlNewProducts.DataBind();
         }
 
         private void DisplayProducts()
         {
+            int brand = Convert.ToInt32(Request.QueryString["brand"]);
             DAL d = new DAL(conn);
-            dlProducts.DataSource = d.ExecuteProcedure("spSearchProducts");
-            dlProducts.DataBind();
+            if(brand == 0)
+            {
+                dlProducts.DataSource = d.ExecuteProcedure("spSearchProducts");
+                dlProducts.DataBind();
+            }
+            else
+            {
+                d.AddParam("Pro_Brand", brand);
+                dlProducts.DataSource = d.ExecuteProcedure("spSearchProducts");
+                dlProducts.DataBind();
+            }
+            
+            dlProductScroll.DataSource = d.ExecuteProcedure("spSearchProducts");
+            dlProductScroll.DataBind();
         }
     }
 }

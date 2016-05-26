@@ -20,6 +20,7 @@ namespace Assignment4
         {
             if(!IsPostBack)
             {
+                DisplayProductLists();
                 if (Session["User"]== null)
                 {
                     hlLogout.Visible = false;
@@ -45,6 +46,13 @@ namespace Assignment4
                     lblCount.Text = Session["cartItems"].ToString();
                 }
             }
+        }
+
+        private void DisplayProductLists()
+        {
+            DAL d = new DAL(conn);
+            dlProductNav.DataSource = d.ExecuteProcedure("spProductListByCategory");
+            dlProductNav.DataBind();
         }
 
         protected void btnEmail_Click(object sender, EventArgs e)

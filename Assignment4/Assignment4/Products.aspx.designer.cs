@@ -13,13 +13,22 @@ namespace Assignment4 {
     public partial class Products {
         
         /// <summary>
-        /// lbnewProducts control.
+        /// dlNewProducts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lbnewProducts;
+        protected global::System.Web.UI.WebControls.DataList dlNewProducts;
+        
+        /// <summary>
+        /// dlBrands control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList dlBrands;
         
         /// <summary>
         /// dlProducts control.
@@ -29,5 +38,14 @@ namespace Assignment4 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DataList dlProducts;
+        
+        /// <summary>
+        /// dlProductScroll control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList dlProductScroll;
     }
 }

@@ -80,7 +80,7 @@ INSERT INTO tbStores VALUES
 ('Petsmart','123 SomeWhereElse Street R3C 1Y2')
 
 INSERT INTO tbProducts VALUES
-('Acer Laptop',450.00,'IMAGE1',6,'Portable Computer',1,1),
+('Acer Laptop',450.00,'Acer_Laptop.jpg',6,'Portable Computer',1,1),
 ('Leash',12.00,'IMAGE2',1,'Used to walk animals',8,1)
 
 INSERT INTO tbUsers VALUES
@@ -191,7 +191,7 @@ BEGIN
 -- Lists Products Based on the ID
 	IF(@Pro_ID IS NOT NULL)
 		SELECT Pro_ID AS 'ID', Pro_Name AS 'Product', Price,
-			   Product_Image AS 'Image', Description,
+			   './web/images/' + Product_Image AS 'Image', Description,
 			   Brand_Name,Category,Store_Name
 		FROM tbStores S
 		JOIN tbProducts P ON S.Store_ID = P.Store
@@ -200,7 +200,7 @@ BEGIN
 --Lists Products based on the Product Name
 	ELSE IF(@Pro_Name IS NOT NULL)
 		SELECT Pro_ID AS 'ID', Pro_Name AS 'Product', Price,
-			   Product_Image AS 'Image', Description,
+			   './web/images/' + Product_Image AS 'Image', Description,
 			   Brand_Name,Category,Store_Name
 		FROM tbStores S
 		JOIN tbProducts P ON S.Store_ID = P.Store
@@ -209,7 +209,7 @@ BEGIN
 --Lists Products based on the Price
 	ELSE IF(@Pro_Price IS NOT NULL)
 		SELECT Pro_ID AS 'ID', Pro_Name AS 'Product', Price,
-			   Product_Image AS 'Image', Description,
+			   './web/images/' + Product_Image AS 'Image', Description,
 			   Brand_Name,Category,Store_Name
 		FROM tbStores S
 		JOIN tbProducts P ON S.Store_ID = P.Store
@@ -218,7 +218,7 @@ BEGIN
 -- Lists Products based on the Brand
 	ELSE IF(@Pro_Brand IS NOT NULL)
 		SELECT Pro_ID AS 'ID', Pro_Name AS 'Product', Price,
-			   Product_Image AS 'Image', Description,
+			   './web/images/' + Product_Image AS 'Image', Description,
 			   Brand_Name,Category,Store_Name
 		FROM tbStores S
 		JOIN tbProducts P ON S.Store_ID = P.Store
@@ -227,7 +227,7 @@ BEGIN
 -- Lists Products based on the Category
 	ELSE IF(@Category IS NOT NULL)
 		SELECT Pro_ID AS 'ID', Pro_Name AS 'Product', Price,
-			   Product_Image AS 'Image', Description,
+			   './web/images/' + Product_Image AS 'Image', Description,
 			   Brand_Name,Category,Store_Name
 		FROM tbStores S
 		JOIN tbProducts P ON S.Store_ID = P.Store
@@ -236,7 +236,7 @@ BEGIN
 -- Lists Products based on the Stores that they are at
 	ELSE IF(@Store IS NOT NULL)
 		SELECT Pro_ID AS 'ID', Pro_Name AS 'Product', Price,
-			   Product_Image AS 'Image', Description,
+			   './web/images/' + Product_Image AS 'Image', Description,
 			   Brand_Name,Category,Store_Name
 		FROM tbStores S
 		JOIN tbProducts P ON S.Store_ID = P.Store
@@ -245,7 +245,7 @@ BEGIN
 --If there are no search parameters it just lists all of the products
 	ELSE
 		SELECT Pro_ID AS 'ID', Pro_Name AS 'Product', Price,
-			   Product_Image AS 'Image', Description,
+			   './web/images/' + Product_Image AS 'Image', Description,
 			   Brand_Name,Category,Store_Name
 		FROM tbStores S
 		JOIN tbProducts P ON S.Store_ID = P.Store
@@ -549,6 +549,14 @@ BEGIN
 		Product = ISNULL (@Product, Product),
 		Quantity = ISNULL (@Quantity, Quantity)
 	WHERE Order_Detail_ID = @Order_Details_ID
+END
+GO
+
+CREATE PROC spProductListByCategory
+AS
+BEGIN
+	SELECT * FROM tbProducts p
+	JOIN tbCategories c ON p.Category = c.Cat_ID
 END
 GO
 

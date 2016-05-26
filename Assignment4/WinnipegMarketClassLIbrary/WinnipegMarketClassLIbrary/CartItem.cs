@@ -16,10 +16,10 @@ namespace WinnipegMarketClassLIbrary
 
         public CartItem(int productID, int quantity)
         {
-            Products myProduct = Products.GetProductByID(productID);
+            Products myProduct = Products.GetProductsByID(productID);
             this.Product = myProduct.Product;
             this.Price = myProduct.Price;
-            this.ImagePath = myProduct.ImagePath;
+            this.Image = myProduct.Image;
             this.Category = myProduct.Category;
             this.Id = myProduct.Id;
             this.Quantity = quantity;

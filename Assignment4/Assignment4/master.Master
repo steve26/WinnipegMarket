@@ -17,7 +17,6 @@
     <script src="web/js/simpleCart.min.js"> </script>
     <link rel="stylesheet" href="web/css/flexslider.css" type="text/css" media="screen" />
     
-        
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -72,116 +71,25 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	        <ul class="nav navbar-nav">
 			<li><a href="Index.aspx">Home</a></li>
-		        <li class="dropdown">
-		            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Men <b class="caret"></b></a>
+		        <asp:DataList ID="dlProductNav" runat="server">
+        <ItemTemplate>
+            <li class="dropdown">
+		            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%# Eval("Cat_Name") %> <b class="caret"></b></a>
 		            <ul class="dropdown-menu multi-column columns-3">
 			            <div class="row">
 				            <div class="col-sm-4">
 					            <ul class="multi-column-dropdown">
-									<h6>NEW IN</h6>
-						            <li><a href="Products.aspx">New In Clothing</a></li>
-						            <li><a href="Products.aspx">New In Bags</a></li>
-						            <li><a href="Products.aspx">New In Shoes</a></li>
-						            <li><a href="Products.aspx">New In Watches</a></li>
-						            <li><a href="Products.aspx">New In Grooming</a></li>
+									<h6><%# Eval("Pro_Name") %></h6>
+						            <li><a href="Single.aspx?product='<%# Eval("Pro_ID") %>'"><%# Eval("Pro_Name") %></a></li>
 					            </ul>
 				            </div>
-				            <div class="col-sm-4">
-					            <ul class="multi-column-dropdown">
-									<h6>CLOTHING</h6>
-						            <li><a href="Products.aspx">Polos & Tees</a></li>
-						            <li><a href="Products.aspx">Casual Shirts</a></li>
-						            <li><a href="Products.aspx">Casual Trousers</a></li>
-						            <li><a href="Products.aspx">Jeans</a></li>
-						            <li><a href="Products.aspx">Shorts & 3/4th</a></li>
-						            <li><a href="Products.aspx">Formal Shirts</a></li>
-						            <li><a href="Products.aspx">Formal Trousers</a></li>
-						            <li><a href="Products.aspx">Suits & Blazers</a></li>
-						            <li><a href="Products.aspx">Track Wear</a></li>
-						            <li><a href="Products.aspx">Inner Wear</a></li>
-					            </ul>
-				            </div>
-				            <div class="col-sm-4">
-					            <ul class="multi-column-dropdown">
-									<h6>WATCHES</h6>
-						            <li><a href="Products.aspx">Analog</a></li>
-						            <li><a href="Products.aspx">Chronograph</a></li>
-						            <li><a href="Products.aspx">Digital</a></li>
-						            <li><a href="Products.aspx">Watch Cases</a></li>
-					            </ul>
 				            </div>
 							<div class="clearfix"></div>
 			            </div>
 		            </ul>
 		        </li>
-		        <li class="dropdown">
-		            <a href="#" class="dropdown-toggle" data-toggle="dropdown">women <b class="caret"></b></a>
-		            <ul class="dropdown-menu multi-column columns-3">
-			            <div class="row">
-				            <div class="col-sm-4">
-					            <ul class="multi-column-dropdown">
-									<h6>NEW IN</h6>
-						            <li><a href="Products.aspx">New In Clothing</a></li>
-						            <li><a href="Products.aspx">New In Bags</a></li>
-						            <li><a href="Products.aspx">New In Shoes</a></li>
-						            <li><a href="Products.aspx">New In Watches</a></li>
-						            <li><a href="Products.aspx">New In Beauty</a></li>
-					            </ul>
-				            </div>
-				            <div class="col-sm-4">
-					            <ul class="multi-column-dropdown">
-									<h6>CLOTHING</h6>
-						            <li><a href="Products.aspx">Polos & Tees</a></li>
-						            <li><a href="Products.aspx">Casual Shirts</a></li>
-						            <li><a href="Products.aspx">Casual Trousers</a></li>
-						            <li><a href="Products.aspx">Jeans</a></li>
-						            <li><a href="Products.aspx">Shorts & 3/4th</a></li>
-						            <li><a href="Products.aspx">Formal Shirts</a></li>
-						            <li><a href="Products.aspx">Formal Trousers</a></li>
-						            <li><a href="Products.aspx">Suits & Blazers</a></li>
-						            <li><a href="Products.aspx">Track Wear</a></li>
-						            <li><a href="Products.aspx">Inner Wear</a></li>
-					            </ul>
-				            </div>
-				            <div class="col-sm-4">
-					            <ul class="multi-column-dropdown">
-									<h6>WATCHES</h6>
-						            <li><a href="Products.aspx">Analog</a></li>
-						            <li><a href="Products.aspx">Chronograph</a></li>
-						            <li><a href="Products.aspx">Digital</a></li>
-						            <li><a href="Products.aspx">Watch Cases</a></li>
-					            </ul>
-				            </div>
-							<div class="clearfix"></div>
-			            </div>
-		            </ul>
-		        </li>
-		        <li class="dropdown">
-		        	<a href="#" class="dropdown-toggle" data-toggle="dropdown">kids <b class="caret"></b></a>
-		            <ul class="dropdown-menu multi-column columns-2">
-			            <div class="row">
-				            <div class="col-sm-6">
-					            <ul class="multi-column-dropdown">
-									<h6>NEW IN</h6>
-						            <li><a href="Products.aspx">New In Boys Clothing</a></li>
-						            <li><a href="Products.aspx">New In Girls Clothing</a></li>
-						            <li><a href="Products.aspx">New In Boys Shoes</a></li>
-						            <li><a href="Products.aspx">New In Girls Shoes</a></li>
-					            </ul>
-				            </div>
-				            <div class="col-sm-6">
-					             <ul class="multi-column-dropdown">
-									<h6>ACCESSORIES</h6>
-						            <li><a href="Products.aspx">Bags</a></li>
-						            <li><a href="Products.aspx">Watches</a></li>
-						            <li><a href="Products.aspx">Sun Glasses</a></li>
-						            <li><a href="Products.aspx">Jewellery</a></li>
-					            </ul>
-				            </div>
-							<div class="clearfix"></div>
-			            </div>
-		            </ul>
-		        </li>
+        </ItemTemplate>
+    </asp:DataList>
 					<li><a href="Contact.aspx">CONTACT</a></li>
 	        </ul>
 	    </div>

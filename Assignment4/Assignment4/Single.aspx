@@ -6,17 +6,16 @@
 	   <div class="products-page">
 			<div class="products">
 				<div class="product-listy">
-					<h2>top Products</h2>
-					<ul class="product-list">
-						<?php
-						$sql = "SELECT Pro_Name FROM tbProducts WHERE Pro_ID BETWEEN 5 AND 10";
-						$stmt = sqlsrv_query($conn, $sql);
-						while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
-						{
-							echo '<li class="product"><a href="#">'.$row['Pro_Name'].'</li></a>';
-						}
-						?>
-					</ul>
+					<h2>new Products</h2>
+                    <ul class="product-list">
+                    <asp:DataList ID="dlNewProducts" runat="server">
+                        <ItemTemplate>
+                            <li>
+                            <a href="Single.aspx?product='<%# Eval("ID") %>'"><asp:Label Text='<%# Eval("Pro_Name") %>' runat="server" /></a>
+                                </li>
+                        </ItemTemplate>
+                    </asp:DataList>
+                        </ul>
 				</div>
 				<div class="latest-bis">
 					<img src="web/images/l4.jpg" class="img-responsive" alt="" />
@@ -29,79 +28,71 @@
 					<div class="tags">
 						<h4 class="tag_head">Brands</h4>
 						<ul class="tags_links">
-							<?php
-							$sql = "SELECT Brand_Name FROM tbBrands";
-							$stmt = sqlsrv_query($conn, $sql);
-							while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
-							{
-								echo '<li><a href="#">'.$row['Brand_Name'].'</li></a>';
-							}
-							?>
+                            <asp:DataList ID="dlBrands" runat="server">
+                        <ItemTemplate>
+                            	<li><a href="Products.aspx?brand='<%# Eval("Brand_ID") %>'"><%# Eval("Brand_Name") %></li></a>
+                        </ItemTemplate>
+                    </asp:DataList>
 						</ul>
-
 					</div>
-					
 				     </div>
 
 			</div>
 			<div class="new-product">
 				<div class="col-md-5 zoom-grid">
 					<div class="flexslider">
-                        <?php
-                        $id = $_GET['mode'];
-                        $sql = "SELECT Pro_Name,Price,Product_Image,Brand,Description,Category,Store FROM tbProducts WHERE Pro_ID = $id";
-                        $stmt = sqlsrv_query($conn, $sql);
-                        while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
-                        {
-                            echo '<ul class="slides">';
-                            echo '<li data-thumb=web/images/"'.$row[Product_Image].'">';
-                            echo '<div class="thumb-image"> <img src="web/images/'.$row[Product_Image].'" data-imagezoom="true" class="img-responsive" alt="" /> </div>';
-                            echo '</li>';
-                            echo '<li data-thumb="web/images/'.$row[Product_Image].'">';
-                            echo '<div class="thumb-image"> <img src="web/images/'.$row[Product_Image].'" data-imagezoom="true" class="img-responsive" alt="" /> </div>';
-                            echo '</li>';
-                            echo '<li data-thumb="images/'.$row[Product_Image].'">';
-                            echo '<div class="thumb-image"> <img src="web/images/'.$row[Product_Image].'" data-imagezoom="true" class="img-responsive" alt="" /> </div>';
-                            echo '</li>';
-                            echo '</ul>';
-                            echo '</div>';
-                            echo '</div>';
-                            echo '<div class="col-md-7 dress-info">';
-                            echo '<div class="dress-name">';
-						    echo '<h3>'.$row[Pro_Name].'</h3>';
-                            echo '<span>'.$row[Price].'</span>';
-                            echo '<div class="clearfix"></div>';
-                            echo '<p>'.$row[Description].'</p>';
-                            echo '</div>';
-                            echo '<div class="span span1">';
-                            echo '<p class="left">BRAND</p>';
-                            echo '<p class="right">'.$row['Brand'].'</p>';
-                            echo '<div class="clearfix"></div>';
-                            echo '</div>';
-                            echo '<div class="span span2">';
-                            echo '<p class="left">STORE</p>';
-                            echo '<p class="right">'.$row[Store].'</p>';
-                            echo '<div class="clearfix"></div>';
-                            echo '</div>';
-                            echo '<div class="span span3">';
-                            echo '<p class="left">CATEGORY</p>';
-                            echo '<p class="right">'.$row[Category].'</p>';
-                            echo '<div class="clearfix"></div>';
-                            echo '</div>';
-                            echo '<div class="span span4">';
-                            echo '<div class="purchase">';
-                            echo '<a href="#">Purchase Now</a>';
-                            echo '<div class="social-icons">';
-                            echo '<ul>';
-                            echo '<li><a class="facebook1" href="#"></a></li>';
-                            echo '<li><a class="twitter1" href="#"></a></li>';
-                            echo '<li><a class="googleplus1" href="#"></a></li>';
-                            echo '</ul>';
-                            echo '</div>';
-                            echo '<div class="clearfix"></div>';
-                            echo '</div>';
-                        }
-                    ?>
+                        <asp:DataList ID="dlSingleProduct" runat="server">
+                            <ItemTemplate>  
+                                <ul class="slides">
+                            <li data-thumb='<%# Eval("Image") %>'">';
+                            <div class="thumb-image"> <img src='<%# Eval("Image") %>'" data-imagezoom="true" class="img-responsive" alt="" /> </div>
+                            </li>
+                            <li data-thumb='<%# Eval("Image") %>'">
+                            <div class="thumb-image"> <img src='<%# Eval("Image") %>' data-imagezoom="true" class="img-responsive" alt="" /> </div>
+                            </li>
+                            <li data-thumb='<%# Eval("Image") %>'>
+                            <div class="thumb-image"> <img src='<%# Eval("Image") %>' data-imagezoom="true" class="img-responsive" alt="" /> </div>
+                            </li>
+                            </ul>
+                            </div>
+                            </div>
+                            <div class="col-md-7 dress-info">
+                            <div class="dress-name">
+						    <h3><%# Eval("Product") %></h3>
+                            <span><%# Eval("Price") %></span>
+                            <div class="clearfix"></div>
+                            <p><%# Eval("Description") %></p>
+                            </div>
+                            <div class="span span1">
+                            <p class="left">BRAND</p>
+                            <p class="right"><%# Eval("Brand_Name") %></p>
+                            <div class="clearfix"></div>
+                            </div>
+                            <div class="span span2">
+                            <p class="left">STORE</p>
+                            <p class="right"><%# Eval("Store_Name") %></p>
+                            <div class="clearfix"></div>
+                            </div>
+                            <div class="span span3">
+                            <p class="left">CATEGORY</p>
+                            <p class="right"><%# Eval("Category") %></p>
+                            <div class="clearfix"></div>
+                            </div>
+                            <div class="span span4">
+                            <div class="purchase">
+                            <a href="#">Purchase Now</a>
+                            <div class="social-icons">
+                            <ul>
+                            <li><a class="facebook1" href="#"></a></li>
+                            <li><a class="twitter1" href="#"></a></li>
+                            <li><a class="googleplus1" href="#"></a></li>
+                            </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                            </div>
+                            </ItemTemplate>
+                        </asp:DataList>
+                        
 					
 				<script src="web/js/imagezoom.js"></script>
 					<!-- FlexSlider -->

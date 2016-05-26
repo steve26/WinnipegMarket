@@ -7,7 +7,15 @@
 			<div class="products">
 				<div class="product-listy">
 					<h2>new Products</h2>
-						<asp:ListBox CssClass="product-list" ID="lbnewProducts" runat="server" />
+                    <ul class="product-list">
+                    <asp:DataList ID="dlNewProducts" runat="server">
+                        <ItemTemplate>
+                            <li>
+                            <a href='Single.aspx?product=<%# Eval("ID") %>'><asp:Label Text='<%# Eval("Pro_Name") %>' runat="server" /></a>
+                                </li>
+                        </ItemTemplate>
+                    </asp:DataList>
+                        </ul>
 				</div>
 				<div class="latest-bis">
 					<img src="web/images/l4.jpg" class="img-responsive" alt="" />
@@ -19,7 +27,13 @@
 				<div class="tags">
 					<h4 class="tag_head">Brands</h4>
 					<ul class="tags_links">
-						<li><a href="Products.aspx"></li></a>;
+                        <asp:DataList ID="dlBrands" runat="server">
+                            <ItemTemplate>
+                                <li><a href='Products.aspx?brand=<%# Eval("Brand_ID") %>'>
+                                    <asp:Label Text='<%# Eval("Brand_Name") %>' runat="server" /></a></li>;
+                            </ItemTemplate>
+                        </asp:DataList>
+						
 					</ul>
 
 				</div>
@@ -38,7 +52,7 @@
 					<div class="sort">
 						<div class="sort-by">
 							<label>Sort By</label>
-							<select name="OrderProducts" method="post">
+							<select name="OrderProducts">
 								<option value="1">Brand</option>
 								<option value="2">Name</option>
 								<option value="3">Price</option>
@@ -55,10 +69,6 @@
 					<div class="clearfix"></div>
 				</div>
 				<div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
-					<div class="cbp-vm-options">
-						<a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected" data-view="cbp-vm-view-grid" title="grid">Grid View</a>
-						<a href="#" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list" title="list">List View</a>
-					</div>
 					<div class="pages">
 						<div class="limiter visible-desktop">
 							<label>Show</label>
@@ -73,7 +83,7 @@
 					<asp:DataList ID="dlProducts" runat="server">
                         <ItemTemplate>
                             <li>
-                                    <a href="Single.aspx" class="cbp-vm-image">
+                                    <a href='Single.aspx?product=<%# Eval("ID") %>' class="cbp-vm-image">
                                     <div class="simpleCart_shelfItem">
                                     <div class="view view-first">
                                     <div class="inner_content clearfix">
@@ -97,7 +107,6 @@
                                         </div>
                                     </a>
                         </li>
-
                         </ItemTemplate>
                 </asp:DataList>
 						
@@ -115,18 +124,16 @@
 		<div class="container">
 			<h3 class="like text-center">Featured Collection</h3>
 			<ul id="flexiselDemo3">
-                <?php
-				$sql = "SELECT * FROM tbProducts";
-				$stmt = sqlsrv_query($conn, $sql);
-				while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-					echo '<li><a href="Single.php?mode='.$row[Pro_ID].'"><img src="web/images/'.$row[Product_Image].'" class="img-responsive"/></a>';
-					echo '<div class="product liked-product simpleCart_shelfItem">';
-					echo '<a class="like_name" href="Single.php?mode='.$row[Pro_ID].'">'.$row[Pro_Name].'</a>';
-					echo '<p><a class="item_add" href="Checkout.php""><i></i> <span class=" item_price">'.$row[Price].'</span></a></p>';
-					echo '</div>';
-					echo '</li>';
-				}
-                ?>
+                <asp:DataList ID="dlProductScroll" runat="server">
+                    <ItemTemplate>
+                        <li><a href="Single.php?product='<%# Eval("ID") %>'"><img src='<%# Eval("Image") %>' class="img-responsive"/></a>
+					<div class="product liked-product simpleCart_shelfItem">
+					<a class="like_name" href="Single.php?product='<%# Eval("ID") %>'"><%# Eval("Product") %></a>
+					<p><a class="item_add" href="Checkout.aspx?product='<%# Eval("ID") %>'""><i></i> <span class=" item_price"><%# Eval("Price") %></span></a></p>
+					</div>
+					</li>
+                    </ItemTemplate>
+                </asp:DataList>
 			</ul>
 			<script type="text/javascript">
 				$(window).load(function() {
