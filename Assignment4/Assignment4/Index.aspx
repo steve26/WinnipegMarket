@@ -54,7 +54,7 @@
             <div class="clearfix"> </div>
         </div>
         <div class="shop">
-            <a href="Products.php">SHOP COLLECTION NOW</a>
+            <a href="Products.aspx">SHOP COLLECTION NOW</a>
         </div>
     </div>
 </div>

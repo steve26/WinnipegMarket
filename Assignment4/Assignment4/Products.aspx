@@ -7,16 +7,7 @@
 			<div class="products">
 				<div class="product-listy">
 					<h2>new Products</h2>
-					<ul class="product-list">
-						<?php
-						$sql = "SELECT Pro_ID,Pro_Name FROM tbProducts WHERE Pro_ID < 10";
-						$stmt = sqlsrv_query($conn, $sql);
-						while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
-						{
-							echo '<li class="product"><a href="Single.php?mode='.$row[Pro_ID].'">'.$row['Pro_Name'].'</li></a>';
-						}
-						?>
-					</ul>
+						<asp:ListBox CssClass="product-list" ID="lbnewProducts" runat="server" />
 				</div>
 				<div class="latest-bis">
 					<img src="web/images/l4.jpg" class="img-responsive" alt="" />
@@ -28,14 +19,7 @@
 				<div class="tags">
 					<h4 class="tag_head">Brands</h4>
 					<ul class="tags_links">
-						<?php
-						$sql = "SELECT Brand_ID, Brand_Name FROM tbBrands";
-						$stmt = sqlsrv_query($conn, $sql);
-						while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
-						{
-						echo '<li><a href="Products.php?brand='.$row[Brand_ID].'">'.$row['Brand_Name'].'</li></a>';
-						}
-						?>
+						<li><a href="Products.aspx"></li></a>;
 					</ul>
 
 				</div>
@@ -86,49 +70,31 @@
 						</div>
 					</div>
 					<div class="clearfix"></div>
-					<ul>
+					<asp:DataList runat="server">
+                        <ItemTemplate></ItemTemplate>
+                </asp:DataList>
 						<li>
-                                <?php
-								$brandId = $_GET['brand'];
-                                $storeId = $_Get['store'];
-
-								if ($brandId == null && $storeId == null)
-								{
-									$sql = "SELECT * FROM tbProducts";
-								}
-								else if ($brandId != null && $storeId == null)
-								{
-									$sql = "SELECT * FROM tbProducts WHERE Brand = $brandId";
-								}
-                                else if ($storeId != null && $brandId == null)
-                                {
-                                    $sql = "SELECT * FROM tbProducts WHERE Store = $storeId";
-                                }
-								$stmt = sqlsrv_query($conn, $sql);
-                                while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
-                                {
-                                    echo '<a href="Single.php?mode='.$row[Pro_ID].'" class="cbp-vm-image">';
-                                    echo '<div class="simpleCart_shelfItem">';
-                                    echo '<div class="view view-first">';
-                                    echo '<div class="inner_content clearfix">';
-                                    echo '<div class="product_image">';
-                                    echo '<img src="web/images/'.$row[Product_Image].'" class="img-responsive" alt=""/>';
-                                    echo '<div class="mask">';
-                                    echo '<div class="info">Quick View</div>';
-                                    echo '</div>';
-                                    echo '<div class="product_container">';
-                                    echo '<div class="cart-left">';
-                                    echo '<p class="title">'.$row[Pro_Name].'</p>';
-                                    echo '</div>';
-                                    echo '<div class="pricey"><span class="item_price">'.$row[Price].'</span></div>';
-                                    echo '<div class="clearfix"></div>';
-                                    echo '</div>';
-                                    echo '</div>';
-                                    echo '</div>';
-                                    echo '</div>';
-                                    echo '</a>';
-                                }
-                                ?>
+                                    <a href="Single.php?mode='.$row[Pro_ID].'" class="cbp-vm-image">
+                                    <div class="simpleCart_shelfItem">
+                                    <div class="view view-first">
+                                    <div class="inner_content clearfix">
+                                    <div class="product_image">
+                                        <asp:Image ID="imgProductImage" CssClass="img-responsive" ImageUrl="~/Single.aspx" runat="server" />
+                                    <div class="mask">
+                                    <div class="info">Quick View</div>
+                                    </div>
+                                    <div class="product_container">
+                                    <div class="cart-left">
+                                    <p class="title">'.$row[Pro_Name].'</p>
+                                    </div>
+                                    <div class="pricey"><span class="item_price">'.$row[Price].'</span></div>
+                                    <div class="clearfix"></div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                        </div>
+                                    </a>
                         </li>
 
 	</ul>

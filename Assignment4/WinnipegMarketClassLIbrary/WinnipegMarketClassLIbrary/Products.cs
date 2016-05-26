@@ -5,31 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL_Project;
 using System.Configuration;
+using System.Data;
 
 namespace WinnipegMarketClassLIbrary
 {
-    public class Products
+
+    public class ProductClass
     {
         public int Id { get; set; }
         public string Product { get; set; }
+        public string Image { get; set; }
         public decimal Price { get; set; }
-        public Categories Category { get; set; }
-        public Brands Brand { get; set; }
-        public Stores Store { get; set; }
-        public Products()
-        {
+        public string Category { get; set; }
+        public string Brand { get; set; }
+        public string Store { get; set; }
 
-        }
-
-        public Products(int Id, string Product, decimal Price, Categories Category, Brands Brand, Stores Store)
-        {
-            this.Id = Id;
-            this.Product = Product;
-            this.Price = Price;
-            this.Category = Category;
-            this.Brand = Brand;
-            this.Store = Store;
-        }
         public void GetAllProducts()
         {
             DAL d = new DAL(ConfigurationManager.ConnectionStrings["dbWinnipegMarket"].ConnectionString);
@@ -60,5 +50,13 @@ namespace WinnipegMarketClassLIbrary
             d.AddParam("Store", Store);
             d.ExecuteProcedure("spSearchProducts");
         }
+        public void NewProducts()
+        {
+            DAL d = new DAL(ConfigurationManager.ConnectionStrings["dbWinnipegMarket"].ConnectionString);
+            d.ExecuteProcedure("spNewProducts");
+
+            
+        }
+        
     }
 }

@@ -170,6 +170,13 @@ GO
 
 -- This gives you the option to search products by ID, Name, Price, Store or Category
 
+CREATE PROCEDURE spNewProducts
+as
+begin 
+	Select * from tbProducts Where Pro_ID > 10
+end
+go
+
 CREATE PROCEDURE spSearchProducts
 (
 	@Pro_ID INT = NULL,
@@ -545,4 +552,3 @@ BEGIN
 END
 GO
 
-update tbBrands set Brand_Name = where Brand_ID = 
