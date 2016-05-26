@@ -18,7 +18,8 @@ namespace Assignment4
         {
             if(!IsPostBack)
             {
-
+                tbPassword.TextMode = TextBoxMode.Password;
+                tbPassword2.TextMode = TextBoxMode.Password;
             }
         }
 

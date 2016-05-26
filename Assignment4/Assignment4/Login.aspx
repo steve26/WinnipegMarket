@@ -32,7 +32,7 @@
 							<p>If you have an account with us, please log in.</p>
 								<div>
 									<span>User Name or Email Address<label>*</label></span>
-                                    <asp:TextBox ID="tbName" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="tbName"  runat="server"></asp:TextBox>
 								</div>
 								<div>
 									<span>Password<label>*</label></span>

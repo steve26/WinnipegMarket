@@ -18,7 +18,7 @@ namespace Assignment4
         {
             if(!IsPostBack)
             {
-
+                tbPassword.TextMode = TextBoxMode.Password;
             }
 
         }
@@ -30,6 +30,7 @@ namespace Assignment4
 
             if (Session["User"] == null)
             {
+                
                 lblError.Text = "Invalid login, Please try again.";
             }
             else

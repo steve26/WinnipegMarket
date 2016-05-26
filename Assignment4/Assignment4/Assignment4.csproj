@@ -91,6 +91,7 @@
     <Content Include="packages.config" />
     <Content Include="Products.aspx" />
     <Content Include="Registration.aspx" />
+    <Content Include="save.txt" />
     <Content Include="Single.aspx" />
     <Content Include="web\account.html" />
     <Content Include="web\checkout.html" />
