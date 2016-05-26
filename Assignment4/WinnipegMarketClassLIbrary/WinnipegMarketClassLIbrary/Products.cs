@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL_Project;
 using System.Configuration;
-
+using System.Data;
 namespace WinnipegMarketClassLIbrary
 {
     public class Products
@@ -13,15 +13,16 @@ namespace WinnipegMarketClassLIbrary
         public int Id { get; set; }
         public string Product { get; set; }
         public decimal Price { get; set; }
-        public Categories Category { get; set; }
-        public Brands Brand { get; set; }
-        public Stores Store { get; set; }
+        public int Category { get; set; }
+        public int Brand { get; set; }
+        public int Store { get; set; }
+        public string ImagePath { get; set; }
         public Products()
         {
 
         }
 
-        public Products(int Id, string Product, decimal Price, Categories Category, Brands Brand, Stores Store)
+        public Products(int Id, string Product, decimal Price, int Category, int Brand, int Store)
         {
             this.Id = Id;
             this.Product = Product;
@@ -41,6 +42,25 @@ namespace WinnipegMarketClassLIbrary
             DAL d = new DAL(ConfigurationManager.ConnectionStrings["dbWinnipegMarket"].ConnectionString);
             d.AddParam("Pro_ID", Id);
             d.ExecuteProcedure("spSearchProducts");
+        }
+        public static Products GetProductByID(int productID)
+        {
+            Products result = null;
+            DAL_Project.DAL d = new DAL_Project.DAL(ConfigurationManager.ConnectionStrings["dbA3ConnStr"].ConnectionString);
+            d.AddParam("ProductID", productID);
+            DataRow row = d.ExecuteProcedure("spGetProductByID").Tables[0].Rows[0];
+            result = GetProductFromDataRow(row);
+            return result;
+        }
+        private static Products GetProductFromDataRow(DataRow row)
+        {
+            Products p = new Products();
+            p.Id = int.Parse(row["Pro_ID"].ToString());
+            p.Category = int.Parse(row["Category"].ToString());
+            p.Product = row["Pro_Name"].ToString();
+            p.Price = decimal.Parse(row["Price"].ToString());
+            p.ImagePath = row["Product_Image"].ToString();
+            return p;
         }
         public void SearchProductsByBrand(int Brand)
         {

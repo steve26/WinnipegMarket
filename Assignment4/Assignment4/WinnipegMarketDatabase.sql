@@ -1,3 +1,8 @@
 USE dbWinnipegMarket
 go
-select*from tbUsers
+create proc spGetProductByID (
+@ID int)
+as begin
+select*from tbProducts where Pro_ID=@ID
+end
+go
