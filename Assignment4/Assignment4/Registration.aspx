@@ -25,7 +25,7 @@
                     <div class="reg">
                         <p>Welcome, please enter the following details to continue.</p>
                         <p>If you have previously registered with us, <a href="Login.aspx">click here</a></p>
-                        <form>
+                        
                             <ul>
                                 <li class="text-info">First Name: </li>
                                 <li>
@@ -61,9 +61,10 @@
                                 <li>
                                     <asp:TextBox ID="tbPhone" runat="server"></asp:TextBox></li>
                             </ul>
-                            <asp:Button ID="btnRegister" runat="server" Text="Register Now" />
+                            <asp:Label ID="lblError" runat="server" Text=""></asp:Label><br />
+                            <asp:Button ID="btnRegister" runat="server" Text="Register Now" OnClick="btnRegister_Click" />
                             <p class="click">By clicking this button, you are agree to my  <a href="#">Policy Terms and Conditions.</a></p>
-                        </form>
+                        
                     </div>
                 </div>
                 <div class="reg-right">

@@ -13,7 +13,7 @@ namespace Assignment4
 {
     public partial class Login : System.Web.UI.Page
     {
-        string conn = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)

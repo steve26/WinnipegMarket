@@ -40,10 +40,11 @@ CREATE TABLE tbProducts
 CREATE TABLE tbUsers
 (
 	User_ID INT IDENTITY(1,1) PRIMARY KEY,
-	Username VARCHAR(MAX),
 	Password VARCHAR(MAX),
 	First_Name VARCHAR(MAX),
 	Last_Name VARCHAR(MAX),
+	PhoneNumber VARCHAR(MAX),
+	CustomerAddress VARCHAR(MAX),
 	Email VARCHAR(MAX),
 	User_Type INT -- 1 = Admin, 0 = Customer
 )
@@ -83,9 +84,7 @@ INSERT INTO tbProducts VALUES
 ('Acer Laptop',450.00,'IMAGE1',6,'Portable Computer',1,1),
 ('Leash',12.00,'IMAGE2',1,'Used to walk animals',8,1)
 
-INSERT INTO tbUsers VALUES
-('RandomCustomer','password1','John','Doe','John_Doe@email.com',0),
-('Administrator','password2','Boss','Man','Boss_Man@email.com',1)
+
 
 -- Selects
 
@@ -377,14 +376,15 @@ CREATE PROC spAddUsers
 	@First_Name VARCHAR(MAX),
 	@Last_Name VARCHAR(MAX),
 	@Email VARCHAR(MAX),
-	@User_Type INT
+	@Address VARCHAR(MAX),
+	@PhoneNumber VARCHAR(MAX)
 )
 AS
 BEGIN
 	INSERT INTO tbUsers (Password,First_Name,Last_Name,
-	Email, User_Type) VALUES
+	Email, User_Type,CustomerAddress,PhoneNumber) VALUES
 	(@Password, @First_Name, @Last_Name, @Email, 
-	@User_Type)
+	1,@Address,@PhoneNumber)
 END
 GO
 
@@ -399,17 +399,19 @@ GO
 CREATE PROC spUpdateUsers
 (
 	@User_ID INT,
-	@Username VARCHAR(MAX) = NULL,
 	@Password VARCHAR(MAX) = NULL,
 	@First_Name VARCHAR(MAX) = NULL,
 	@Last_Name VARCHAR(MAX) = NULL,
 	@Email VARCHAR(MAX) = NULL,
-	@User_Type INT = NULL
+	@User_Type INT = NULL,
+	@Address VARCHAR(MAX),
+	@PhoneNumber VARCHAR(MAX)
 )
 AS
 BEGIN
 	UPDATE tbUsers SET
-		Username = ISNULL (@Username, Username),
+		CustomerAddress = ISNULL (@Address, CustomerAddress),
+		PhoneNumber = ISNULL (@PhoneNumber, PhoneNumber),
 		Password = ISNULL (@Password, Password),
 		First_Name = ISNULL (@First_Name, First_Name),
 		Last_Name = ISNULL (@Last_Name, Last_Name),
@@ -421,20 +423,13 @@ GO
 
 CREATE PROC spLogin
 (
-	@Username VARCHAR(MAX) = NULL,
 	@Email VARCHAR(MAX) = NULL,
 	@Password VARCHAR(MAX)
 )
 AS
-BEGIN
-	IF(@Username IS NOT NULL)
-		SELECT * FROM tbUsers
-		WHERE Username = @Username AND
-			  Password = @Password
-	ELSE
-		SELECT * FROM tbUsers
-		WHERE Email = @Email AND
-			  Password = @Password
+BEGIN 
+SELECT * FROM tbUsers
+WHERE Email = @Email AND Password = @Password
 END
 GO
 
@@ -545,4 +540,3 @@ BEGIN
 END
 GO
 
-update tbBrands set Brand_Name = where Brand_ID = 
