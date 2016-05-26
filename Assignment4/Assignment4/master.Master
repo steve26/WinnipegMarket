@@ -28,14 +28,23 @@
 			<div class="container">
 				<div class="header-top-left">
 					<ul>
-						<li><a href="Login.aspx"><span class="glyphicon glyphicon-user"> </span>Login</a></li>
+						<li>
+                            <asp:HyperLink ID="hlLogin" NavigateUrl="~/Login.aspx" runat="server" class="glyphicon glyphicon-user">Login</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="hlLogout"  NavigateUrl="~/Login.aspx" runat="server" Visible="false" class="glyphicon glyphicon-user">Logout</asp:HyperLink></li>
 						<li><a href="Registration.aspx"><span class="glyphicon glyphicon-lock"> </span>Create an Account</a></li>			
 					</ul>
 				</div>
 				<div class="header-right">
 						<div class="cart box_1">
 							<a href="Checkout.aspx">
-								<h3> <span class="simpleCart_total"> $0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span>)<img src="web/images/bag.png" alt=""></h3>
+                                <center><h3>
+                                    
+                                    <asp:Label ID="lblGreeting" runat="server" Text=""></asp:Label></h3><center>
+								<h3> <span class="simpleCart_total"> <asp:Label ID="lblCost" runat="server" Text="$0.00"></asp:Label>
+
+								     </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 
+                                         <asp:Label ID="lblCount" runat="server" Text="0"></asp:Label> </span>)
+                                    <img src="web/images/bag.png" alt=""></h3>
 							</a>	
 							<p><a href="javascript:;" class="simpleCart_empty">Empty cart</a></p>
 							<div class="clearfix"> </div>

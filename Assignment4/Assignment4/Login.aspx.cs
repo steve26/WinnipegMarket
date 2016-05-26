@@ -27,7 +27,7 @@ namespace Assignment4
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            Users.Login(tbName.Text, tbPassword.Text);
+            Security.Login(tbName.Text, tbPassword.Text);
             Users c = (Users)Session["User"];
 
             if (Session["User"] == null)

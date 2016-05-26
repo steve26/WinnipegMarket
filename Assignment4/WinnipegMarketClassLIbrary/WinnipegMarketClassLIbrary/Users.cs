@@ -39,7 +39,7 @@ namespace WinnipegMarketClassLIbrary
 
         public static Users Login(string email, string password)
         {
-            Users x = null;
+            Users x = new Users();
             DAL d = new DAL(ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString);
 
             d.AddParam("Email", email);
@@ -48,16 +48,17 @@ namespace WinnipegMarketClassLIbrary
             DataSet ds = d.ExecuteProcedure("spLogin");
             if (ds.Tables[0].Rows.Count > 0)
             {
-                x.Address = (string)ds.Tables[0].Rows[0]["Address"];
+                x.Address = (string)ds.Tables[0].Rows[0]["CustomerAddress"];
                 x.Email = (string)ds.Tables[0].Rows[0]["Email"];
-                x.FirstName = (string)ds.Tables[0].Rows[0]["FirstName"];
-                x.Id = Convert.ToInt32(ds.Tables[0].Rows[0]["Id"]);
-                x.isAdmin = Convert.ToBoolean(ds.Tables[0].Rows[0]["Id"]);
-                x.LastName = (string)ds.Tables[0].Rows[0]["LastName"];
+                x.FirstName = (string)ds.Tables[0].Rows[0]["First_Name"];
+                x.Id = Convert.ToInt32(ds.Tables[0].Rows[0]["User_ID"]);
+                x.isAdmin = Convert.ToBoolean(ds.Tables[0].Rows[0]["User_Type"]);
+                x.LastName = (string)ds.Tables[0].Rows[0]["Last_Name"];
                 x.Password = (string)ds.Tables[0].Rows[0]["Password"];
                 x.PhoneNumber = (string)ds.Tables[0].Rows[0]["PhoneNumber"];
             }
             return x;
+            
         }
         public void AddUser()
         {

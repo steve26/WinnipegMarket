@@ -20,7 +20,20 @@ namespace Assignment4
         {
             if(!IsPostBack)
             {
-
+                if (Session["User"]== null)
+                {
+                    hlLogout.Visible = false;
+                    hlLogin.Visible = true;
+                    lblGreeting.Text = "Welcome Guest";
+                }
+                else
+                {
+                    hlLogin.Visible = false;
+                    hlLogout.Visible = true;
+                    Users x = (Users)Session["User"];
+                    lblGreeting.Text = "Welcome " + x.FirstName + " " + x.LastName;
+                    
+                }
             }
         }
 

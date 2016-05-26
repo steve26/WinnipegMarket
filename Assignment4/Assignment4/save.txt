@@ -551,3 +551,9 @@ as begin
 insert into EmailList (name) values (@name)
 end
 
+create proc recoverPassword (
+@name varchar(max))
+as begin
+select * from tbUsers where Email = @name
+end
+go
