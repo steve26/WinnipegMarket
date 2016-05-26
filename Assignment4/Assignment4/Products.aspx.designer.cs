@@ -22,12 +22,12 @@ namespace Assignment4 {
         protected global::System.Web.UI.WebControls.ListBox lbnewProducts;
         
         /// <summary>
-        /// imgProductImage control.
+        /// dlProducts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgProductImage;
+        protected global::System.Web.UI.WebControls.DataList dlProducts;
     }
 }

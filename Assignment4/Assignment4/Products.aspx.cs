@@ -14,18 +14,20 @@ namespace Assignment4
 {
     public partial class Products : System.Web.UI.Page
     {
-        
+        string conn = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
             {
-                DisplayNewProducts();
+                DisplayProducts();
             }
         }
 
-        private void DisplayNewProducts()
+        private void DisplayProducts()
         {
-            
+            DAL d = new DAL(conn);
+            dlProducts.DataSource = d.ExecuteProcedure("spSearchProducts");
+            dlProducts.DataBind();
         }
     }
 }

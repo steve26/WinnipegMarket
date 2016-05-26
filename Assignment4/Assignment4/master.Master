@@ -16,6 +16,8 @@
     <script type="text/javascript" src="web/js/bootstrap-3.1.1.min.js"></script>
     <script src="web/js/simpleCart.min.js"> </script>
     <link rel="stylesheet" href="web/css/flexslider.css" type="text/css" media="screen" />
+    
+        
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -26,14 +28,23 @@
 			<div class="container">
 				<div class="header-top-left">
 					<ul>
-						<li><a href="Login.aspx"><span class="glyphicon glyphicon-user"> </span>Login</a></li>
+						<li>
+                            <asp:HyperLink ID="hlLogin" NavigateUrl="~/Login.aspx" runat="server" class="glyphicon glyphicon-user">Login</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="hlLogout"  NavigateUrl="~/Login.aspx" runat="server" Visible="false" class="glyphicon glyphicon-user">Logout</asp:HyperLink></li>
 						<li><a href="Registration.aspx"><span class="glyphicon glyphicon-lock"> </span>Create an Account</a></li>			
 					</ul>
 				</div>
 				<div class="header-right">
 						<div class="cart box_1">
 							<a href="Checkout.aspx">
-								<h3> <span class="simpleCart_total"> $0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span>)<img src="web/images/bag.png" alt=""></h3>
+                                <center><h3>
+                                    
+                                    <asp:Label ID="lblGreeting" runat="server" Text=""></asp:Label></h3><center>
+								<h3> <span class="simpleCart_total"> <asp:Label ID="lblCost" runat="server" Text="$0.00"></asp:Label>
+
+								     </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 
+                                         <asp:Label ID="lblCount" runat="server" Text="0"></asp:Label> </span>)
+                                    <img src="web/images/bag.png" alt=""></h3>
 							</a>	
 							<p><a href="javascript:;" class="simpleCart_empty">Empty cart</a></p>
 							<div class="clearfix"> </div>
@@ -55,7 +66,7 @@
 		        <span class="icon-bar"></span>
 	        </button>
 				<div class="logo">
-					<h1><a href="Index.aspx"><span>E</span> -Shop</a></h1>
+					<h1><a href="Index.aspx"><span>W</span> innipeg Market</a></h1>
 				</div>
 	    </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -176,18 +187,20 @@
 	    </div>
         </nav>
     </div>
-</div>  
-         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+</div>
+    </div>
+    
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
         </asp:ContentPlaceHolder>
-     
         <div class="news-letter">
 			<div class="container">
 				<div class="join">
 					<h6>JOIN OUR MAILING LIST</h6>
 					<div class="sub-left-right">
-							<input type="text" value="Enter Your Email Here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Your Email Here';}" />
-							<input type="submit" value="SUBSCRIBE" />
+                        <asp:TextBox ID="tbEmail" runat="server" placeholder="Enter Your Email Here"></asp:TextBox>
+                        <asp:Button ID="btnEmail" runat="server" Text="SUBSCRIBE" OnClick="btnEmail_Click" />
+						
 					</div>
 					<div class="clearfix"> </div>
 				</div>

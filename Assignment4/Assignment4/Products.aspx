@@ -70,24 +70,25 @@
 						</div>
 					</div>
 					<div class="clearfix"></div>
-					<asp:DataList runat="server">
-                        <ItemTemplate></ItemTemplate>
-                </asp:DataList>
-						<li>
-                                    <a href="Single.php?mode='.$row[Pro_ID].'" class="cbp-vm-image">
+					<asp:DataList ID="dlProducts" runat="server">
+                        <ItemTemplate>
+                            <li>
+                                    <a href="Single.aspx" class="cbp-vm-image">
                                     <div class="simpleCart_shelfItem">
                                     <div class="view view-first">
                                     <div class="inner_content clearfix">
                                     <div class="product_image">
-                                        <asp:Image ID="imgProductImage" CssClass="img-responsive" ImageUrl="~/Single.aspx" runat="server" />
+                                        <asp:Image ID="imgProductImage" CssClass="img-responsive" ImageUrl='<%# Eval("Image") %>' runat="server" />
                                     <div class="mask">
                                     <div class="info">Quick View</div>
                                     </div>
                                     <div class="product_container">
                                     <div class="cart-left">
-                                    <p class="title">'.$row[Pro_Name].'</p>
+                                    <p class="title">
+                                        <asp:Label Text='<%# Eval("Product") %>' runat="server" /></p>
                                     </div>
-                                    <div class="pricey"><span class="item_price">'.$row[Price].'</span></div>
+                                    <div class="pricey"><span class="item_price">
+                                        <asp:Label Text='<%# Eval("Price") %>' runat="server" /></span></div>
                                     <div class="clearfix"></div>
                                     </div>
                                     </div>
@@ -97,6 +98,9 @@
                                     </a>
                         </li>
 
+                        </ItemTemplate>
+                </asp:DataList>
+						
 	</ul>
 	</div>
 	<script src="web/js/cbpViewModeSwitch.js" type="text/javascript"></script>

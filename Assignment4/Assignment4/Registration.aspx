@@ -7,7 +7,7 @@
             <div class="dreamcrub">
                 <ul class="breadcrumbs">
                     <li class="home">
-                        <a href="Index.php" title="Go to Home Page">Home</a>&nbsp;
+                        <a href="Index.aspx" title="Go to Home Page">Home</a>&nbsp;
                         <span>&gt;</span>
                     </li>
                     <li class="women">
@@ -15,7 +15,7 @@
                     </li>
                 </ul>
                 <ul class="previous">
-                    <li><a href="Index.php">Back to Previous Page</a></li>
+                    <li><a href="Index.aspx">Back to Previous Page</a></li>
                 </ul>
                 <div class="clearfix"></div>
             </div>
@@ -24,33 +24,47 @@
                 <div class="reg-form">
                     <div class="reg">
                         <p>Welcome, please enter the following details to continue.</p>
-                        <p>If you have previously registered with us, <a href="Login.php">click here</a></p>
+                        <p>If you have previously registered with us, <a href="Login.aspx">click here</a></p>
+                        
                             <ul>
                                 <li class="text-info">First Name: </li>
-                                <li><input type="text" value="" name="tbFirstName"></li>
+                                <li>
+                                    <asp:TextBox ID="tbFirst" required="required" runat="server"></asp:TextBox></li>
                             </ul>
                             <ul>
                                 <li class="text-info">Last Name: </li>
-                                <li><input type="text" value="" name="tbLastName"></li>
+                                <li>
+                                    <asp:TextBox ID="tbLast" required="required" runat="server"></asp:TextBox></li>
                             </ul>
                             <ul>
                                 <li class="text-info">Email: </li>
-                                <li><input type="text" value="" name="tbEmail"></li>
+                                <li>
+                                    <asp:TextBox ID="tbEmail" required="required" runat="server"></asp:TextBox></li>
                             </ul>
                             <ul>
                                 <li class="text-info">Password: </li>
-                                <li><input type="password" value="" name="tbPassword"></li>
+                                <li>
+                                    <asp:TextBox ID="tbPassword" required="required" runat="server"></asp:TextBox></li>
                             </ul>
                             <ul>
                                 <li class="text-info">Re-enter Password:</li>
-                                <li><input type="password" value="" name="tbPassword2"></li>
+                                <li>
+                                    <asp:TextBox ID="tbPassword2" required="required" runat="server"></asp:TextBox></li>
+                            </ul>
+                            <ul>
+                                <li class="text-info">Address:</li>
+                                <li>
+                                    <asp:TextBox ID="tbAddress" required="required" runat="server"></asp:TextBox></li>
                             </ul>
                             <ul>
                                 <li class="text-info">Mobile Number:</li>
-                                <li><input type="text" value="" name="tbPhoneNumber"></li>
+                                <li>
+                                    <asp:TextBox ID="tbPhone" required="required" runat="server"></asp:TextBox></li>
                             </ul>
-                            <input type="submit" value="REGISTER NOW" name="btnRegister">
+                            <asp:Label ID="lblError" runat="server" Text=""></asp:Label><br />
+                            <asp:Button ID="btnRegister" runat="server" Text="Register Now" OnClick="btnRegister_Click" />
                             <p class="click">By clicking this button, you are agree to my  <a href="#">Policy Terms and Conditions.</a></p>
+                        
                     </div>
                 </div>
                 <div class="reg-right">
