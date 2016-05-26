@@ -65,7 +65,9 @@ CREATE TABLE tbOrderDetails
 	Quantity INT,
 	Subtotal SMALLMONEY
 )
-
+create table EmailList (
+id int primary key identity(1,1),
+name varchar(max))
 -- Inserts
 
 INSERT INTO tbCategories VALUES
@@ -539,4 +541,13 @@ BEGIN
 	WHERE Order_Detail_ID = @Order_Details_ID
 END
 GO
+
+
+
+go
+create proc AddEmail (
+@name varchar(max))
+as begin
+insert into EmailList (name) values (@name)
+end
 

@@ -8,12 +8,14 @@ using System.Data;
 using System.Configuration;
 using DAL_Project;
 using WinnipegMarketClassLIbrary;
+using System.Net.Mail;
 
 namespace Assignment4
 {
     public partial class Login : System.Web.UI.Page
     {
-        
+        string conn = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
@@ -36,6 +38,39 @@ namespace Assignment4
             else
             {
                 Response.Redirect("Products.aspx");
+            }
+        }
+
+        protected void hlEmail_ServerClick(object sender, EventArgs e)
+        {
+            if (tbName.Text != null || tbName.Text != "")
+            {
+                DAL mydal = new DAL(conn);
+                mydal.AddParam("name", tbName.Text);
+                DataSet ds = mydal.ExecuteProcedure("recoverPassword");
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    string pass = (string)ds.Tables[0].Rows[0]["Password"];
+                    MailMessage msg = new MailMessage();
+                    msg.From = new MailAddress("winnipegmarketproject@gmail.com");
+                    msg.To.Add(new MailAddress(tbName.Text));
+                    msg.Subject = "Password Recovery";
+                    msg.Body = "Your password is "+pass;
+                    SmtpClient client = new SmtpClient();
+                    client.Host = "smtp.gmail.com";
+                    client.Port = 587;
+                    client.EnableSsl = true;
+                    client.Credentials = new System.Net.NetworkCredential("winnipegmarketproject@gmail.com", "SD22WinnipegMarket");
+                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    client.Send(msg);
+                }
+                else
+                {
+                    lblError.Text = "That email address is not subscribed to our site.";
+                }
+
+                
+                tbName.Text = "";
             }
         }
     }
