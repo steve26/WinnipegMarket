@@ -69,20 +69,76 @@ CREATE TABLE tbOrderDetails
 -- Inserts
 
 INSERT INTO tbCategories VALUES
-('Electronics'),('Clothing'),('Hair Products'),('Makeup & Skincare'),('Children Items'),
-('Books'),('Education'),('Pets & Supplies'),('Home & Garden'),('Camping & Outdoors')
+	('Electronics'),('Clothing'),('Hair Products'),('Makeup & Skincare'),('Children Items'),
+	('Books'),('Education'),('Pets & Supplies'),('Home & Garden'),('Camping & Outdoors')
 
 INSERT INTO tbBrands VALUES
-('Whiskers'),('Chi'),('M.A.C'),('EduCate'),('Fashionable Kids'),
-('Sony'),('Pate-O'),('Silver'),('Indigo'),('Outdoors')
+	('Whiskers'),('Chi'),('M.A.C'),('EduCate'),('Fashionable Kids'),
+	('Sony'),('Pate-O'),('Silver'),('Indigo'),('Outdoors'),('Samsung'),
+	('Apple'),('LG'),('Dell'),('CyberPower'),('Asus'),('Pioneer'),
+	('Denon'),('Marantz'),('Onkyo'),('PolkAudio'),('Klipsch'),('Canon'),
+	('HTC'),('Cuisinart'),('Epson'),('HP'),('Vizio')
 
 INSERT INTO tbStores VALUES
-('Walmart','123 SomeWhere Street R3C 1Y2'),
-('Petsmart','123 SomeWhereElse Street R3C 1Y2')
+	('Walmart',		'123 SomeWhere Street R3C 1Y2'),
+	('Petsmart',	'123 SomeWhereElse Street R3C 1Y2'),
+	('Best Buy',	'123 Best Buy Street R3C 1Y2'),
+	('Visions',		'123 Visions Street R3C 1Y2'),
+	('Costco',		'123 Costco Street R3C 1Y2')
+
 
 INSERT INTO tbProducts VALUES
-('Acer Laptop',450.00,'Acer_Laptop.jpg',6,'Portable Computer',1,1),
-('Leash',12.00,'IMAGE2',1,'Used to walk animals',8,1)
+	-- Computers 
+	('Acer Laptop',		    450.00,'IMAGE1',6,					'Portable Computer',1,1),
+	('Apple Mac Book Pro',  700.00,'AppleMacBookPro.jpg',6,		'Portable Computer',1,1),
+	('Asus Laptop',		    600.00,'AsusLaptop.jpg',6,			'Portable Computer',1,1),
+	('Dell Insprion Laptop',650.00,'DellInsprionLabtop.jpg',6,	'Portable Computer',1,1),
+	('MicrosoftSurface',    400.00,'MicrosoftSurface.jpg',6,	'Portable Computer',1,1),
+	('Asus ROG',		    1100.00,'AsusROG.jpg',6,			'Gaming Desktop Computer',1,1),
+	('CyberPower PC',	    1400.00,'CyberPowerPc.jpg',6,		'Gaming Desktop Computer',1,1),
+	('Dell Inspiron',	    800.00,'DellInspiron.jpg',6,		'Office Desktop Computer',1,1),
+    ('IBuyPower',	        1600.00,'IBuyPower.jpg',6,			'Gaming Desktop Computer',1,1),
+	('IBuyPower Pro',	    1800.00,'IBuyPower1.jpg',6,			'Gaming Desktop Computer',1,1),
+	-- Televisions 
+	('48" Sony',		     749.00,'48inchSony.jpg',6,				'Entertainment Screen',1,3),
+	('55" Samsung',          1200.00,'55inchSamsung.jpg',6,			'Entertainment Screen',1,3),
+	('55" Samsung Curve',    1500.00,'55inchSamsungCurve.jpg',6,	'Entertainment Screen',1,3),
+	('55" 4k Samsung Curve', 2000.00,'55inchSamsungCurve2.jpg',6,	'Entertainment Screen',1,3),
+	('60" Samsung',			 1499.00,'60inchSamsung.jpg',6,			'Entertainment Screen',1,3),
+	('65" Vizio',			 1442.00,'65inchVizio.jpg',6,			'Entertainment Screen',1,3),
+	('75" Sony',			 5299.00,'75inchSony.jpg',6,			'Entertainment Screen',1,3),
+	('75" Vizio',			 4999.00,'75inchVizio.jpg',6,			'Entertainment Screen',1,3),
+	('86" LG',				 9999.00,'86inchLG.jpg',6,				'Entertainment Screen',1,3),
+	-- Cellphones & Cameras
+	('Canon Cam Corder',		300.00,'CanonCamCorder.jpg',6,		'Video Recorder',1,3),
+	('Canon Powershot',			250.00,'CanonPowershot.jpg',6,		'Video Recorder & Picture Capture',1,3),
+	('Canon Powershot G9',		230.00,'CanonPowershotG9.jpg',6,	'Video Recorder & Picture Capture',1,3),
+	('HTC10',				    160.00,'HTC10.jpg',6,				'Cellphone',1,3),
+	('iPhone 6s Plus',			260.00,'Iphone6sPlus.jpg',6,		'Cellphone',1,3),
+	('LG G5',					200.00,'LGG5.jpg',6,				'Cellphone',1,3),
+	('Nexus 6P',				190.00,'Nexus6P.jpg',6,				'Cellphone',1,3),
+	('Nikon WaterProof Camera',	170.00,'NikonWaterProof.jpg',6,		'Video Recorder & Picture Capture',1,3),
+	('Nixon Coolpus',			300.00,'NixonCoolpus.jpg',6,		'Video Recorder & Picture Capture',1,3),
+	('Samsung Galaxy S7',		200.00,'SamsungGalaxyS7.jpg',6,		'Video Recorder & Picture Capture',1,3),
+	('Sonya7',					450.00,'Sonya7.jpg',6,				'Video Recorder & Picture Capture',1,3),
+	('Sony Xperia Z5',			120.00,'SonyXperiaZ5.jpg',6,		'Video Recorder & Picture Capture',1,3),
+	-- Home Audio & Theatre
+	('Denon AVR',					310.00,'DenonAVR.jpg',6,				'Stero System & Audio',1,3),
+	('Denon AVRS910',				260.00,'DenonAVRS910.jpg',6,			'Stero System & Audio',1,3),
+	('Klipsch Home Theatre System',	400.00,'KlipschHomeTheatre.jpg',6,		'Stero System & Audio',1,3),
+	('Marantz Amplifier',			180.00,'MarantzAmplifier.jpg',6,	    'Stero System & Audio',1,3),
+	('Onkyo Stero Reciever',		210.00,'OnkyoSteroReciever.jpg',6,		'Stero System & Audio',1,3),
+	('Pioneer VSXK',				250.00,'PioneerVSXK.jpg',6,				'Stero System & Audio',1,3),
+	('PolkAudio Theatre System',	500.00,'PolkAudioTheatreSystem.jpg',6,	'Stero System & Audio',1,3),
+	('Sony Haps 500gb',				800.00,'SonyHaps500gb.jpg',6,			'Stero System & Audio',1,3),
+	('Sony Mini CD',				80.00,'SonyMiniCD.jpg',6,				'Stero System & Audio',1,3),
+
+	-- Pet Store
+	('Leash',12.00,'IMAGE2',1,'Used to walk animals',8,1)
+
+
+
+
 
 
 
