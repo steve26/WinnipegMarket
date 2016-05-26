@@ -557,3 +557,10 @@ as begin
 select * from tbUsers where Email = @name
 end
 go
+
+create proc spGetProductByID (
+@ID int)
+as begin
+select*from tbProducts where Pro_ID=@ID
+end
+go

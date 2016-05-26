@@ -33,21 +33,21 @@ namespace WinnipegMarketClassLIbrary
         }
         public void GetAllProducts()
         {
-            DAL d = new DAL(ConfigurationManager.ConnectionStrings["dbWinnipegMarket"].ConnectionString);
+            DAL d = new DAL(ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString);
             d.ExecuteProcedure("spSearchProducts");
         }
 
         public void SearchProductsByID(int Id)
         {
-            DAL d = new DAL(ConfigurationManager.ConnectionStrings["dbWinnipegMarket"].ConnectionString);
+            DAL d = new DAL(ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString);
             d.AddParam("Pro_ID", Id);
             d.ExecuteProcedure("spSearchProducts");
         }
         public static Products GetProductByID(int productID)
         {
             Products result = null;
-            DAL_Project.DAL d = new DAL_Project.DAL(ConfigurationManager.ConnectionStrings["dbA3ConnStr"].ConnectionString);
-            d.AddParam("ProductID", productID);
+            DAL_Project.DAL d = new DAL_Project.DAL(ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString);
+            d.AddParam("ID", productID);
             DataRow row = d.ExecuteProcedure("spGetProductByID").Tables[0].Rows[0];
             result = GetProductFromDataRow(row);
             return result;
@@ -64,19 +64,19 @@ namespace WinnipegMarketClassLIbrary
         }
         public void SearchProductsByBrand(int Brand)
         {
-            DAL d = new DAL(ConfigurationManager.ConnectionStrings["dbWinnipegMarket"].ConnectionString);
+            DAL d = new DAL(ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString);
             d.AddParam("Brand", Brand); 
             d.ExecuteProcedure("spSearchProducts");
         }
         public void SearchProductsByCategory(int Category)
         {
-            DAL d = new DAL(ConfigurationManager.ConnectionStrings["dbWinnipegMarket"].ConnectionString);
+            DAL d = new DAL(ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString);
             d.AddParam("Category", Category);
             d.ExecuteProcedure("spSearchProducts");
         }
         public void SearchProductsByStore(int Store)
         {
-            DAL d = new DAL(ConfigurationManager.ConnectionStrings["dbWinnipegMarket"].ConnectionString);
+            DAL d = new DAL(ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString);
             d.AddParam("Store", Store);
             d.ExecuteProcedure("spSearchProducts");
         }

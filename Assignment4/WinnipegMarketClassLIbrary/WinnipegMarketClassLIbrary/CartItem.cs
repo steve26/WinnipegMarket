@@ -12,7 +12,7 @@ namespace WinnipegMarketClassLIbrary
     {
         public int Quantity { get; set; }
         public int ProductID { get; set; }
-        public double SubTotal { get { return Price * Quantity; } }
+        public decimal SubTotal { get { return Price * Quantity; } }
 
         public CartItem(int productID, int quantity)
         {
@@ -26,6 +26,10 @@ namespace WinnipegMarketClassLIbrary
             //this.ProductID = productID;
             //this.Quantity = quantity;
         }
-        
+
+        public bool Equals(CartItem other)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

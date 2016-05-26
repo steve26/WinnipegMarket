@@ -41,12 +41,12 @@ namespace WinnipegMarketClassLIbrary
         }
         public void RemoveAll()
         {
-            DAL d = new DAL(ConfigurationManager.ConnectionStrings["dbA3ConnStr"].ConnectionString);
-            DataSet ds = d.ExecuteProcedure("spGetOrderByID");
+            DAL d = new DAL(ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString);
+            DataSet ds = d.ExecuteProcedure("spGetOrderDetails");
             int count = ds.Tables[0].Rows.Count;
             do
             {
-                DAL d2 = new DAL(ConfigurationManager.ConnectionStrings["dbA3ConnStr"].ConnectionString);
+                DAL d2 = new DAL(ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString);
                 d2.AddParam("OrderID", Convert.ToInt32(ds.Tables[0].Rows[count - 1]["OrderID"]));
                 d2.ExecuteProcedure("spCheckOut");
                 count--;
@@ -55,7 +55,7 @@ namespace WinnipegMarketClassLIbrary
         }
         public int CheckOut(int CustomerID, DateTime date, decimal price)
         {
-            DAL d = new DAL(ConfigurationManager.ConnectionStrings["dbA3ConnStr"].ConnectionString);
+            DAL d = new DAL(ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString);
             d.AddParam("Customer", CustomerID);
             d.AddParam("Order_Date", date);
             d.AddParam("Prics_Paid", price);
