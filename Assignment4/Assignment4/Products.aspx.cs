@@ -42,19 +42,26 @@ namespace Assignment4
         private void DisplayProducts()
         {
             int brand = Convert.ToInt32(Request.QueryString["brand"]);
+            int category = Convert.ToInt32(Request.QueryString["category"]);
             DAL d = new DAL(conn);
-            if(brand == 0)
+            if(brand == 0 && category==0)
             {
                 dlProducts.DataSource = d.ExecuteProcedure("spSearchProducts");
                 dlProducts.DataBind();
             }
-            else
+            else if(brand > 0 && category == 0)
             {
                 d.AddParam("Pro_Brand", brand);
                 dlProducts.DataSource = d.ExecuteProcedure("spSearchProducts");
                 dlProducts.DataBind();
             }
-            
+            else if (category > 0 && brand == 0)
+            {
+                d.AddParam("Category", category);
+                dlProducts.DataSource = d.ExecuteProcedure("spSearchProducts");
+                dlProducts.DataBind();
+            }
+
             dlProductScroll.DataSource = d.ExecuteProcedure("spSearchProducts");
             dlProductScroll.DataBind();
         }

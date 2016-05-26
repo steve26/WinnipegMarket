@@ -118,16 +118,11 @@
 
       <div class="tab-content responsive hidden-xs hidden-sm">
         <div class="tab-pane active" id="how-to">
-			<?php
-			$id = $_GET['mode'];
-			$sql = "SELECT Pro_Name,Price,Product_Image,Brand,Description,Category,Store FROM tbProducts WHERE Pro_ID = $id";
-			$stmt = sqlsrv_query($conn, $sql);
-			while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-				echo '<p class="tab-text">'.$row['Description'].'</p>';
-			}
-			?>
-
-
+                        <asp:DataList ID="dlDescription" runat="server">
+                                <ItemTemplate>
+                                    <p class="tab-text"><%# Eval("Description") %></p>
+                                </ItemTemplate>
+                            </asp:DataList>
         </div>
         <div class="tab-pane" id="features">
           <p class="tab-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis urna gravida mollis.This tab has icon in consectetur adipiscing eliconse consectetur adipiscing elit. Vestibulum nibh urna, ctetur adipiscing elit. Vestibulum nibh urna, t.consectetur adipiscing elit. Vestibulum nibh urna,  Vestibulum nibh urna,it.</p>
@@ -267,22 +262,21 @@
    <div class="other-products products-grid">
 		<div class="container">
 			<header>
-				<h3 class="like text-center">Related Products</h3>   
+				<h3 class="like text-center">Other Interesting Products</h3>   
 			</header>
-                   <?php
-                        $sql = "SELECT Pro_ID,Pro_Name,Product_Image,Price FROM tbProducts WHERE Pro_ID BETWEEN 6 AND 8";
-                        $stmt = sqlsrv_query($conn, $sql);
-                        while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
-                        {
-                            echo '<div class="col-md-4 product simpleCart_shelfItem text-center">';
-                            echo '<a href="Single.php?mode='.$row[Pro_ID].'"><img style = "width:200px; length:"200px";" src="web/images/'.$row[Product_Image].'" alt="" /></a>';
-                            echo '<div class="mask">';
-                            echo '<a href="Single.php?mode='.$row[Pro_ID].'">Quick View</a>';
-                            echo '</div>';
-                            echo '<a class="product_name" href="Single.php?mode='.$row[Pro_ID].'">'.$row[Pro_Name].'</a>';
-                            echo '<p><a class="item_add" href="#"><i></i> <span class="item_price">'.$row[Price].'</span></a></p>';
-                            echo '</div>';
-                        }
-                        ?>
-            </div>;
+            <asp:DataList ID="dlAllProducts" runat="server" HorizontalAlign="Center">
+                   <ItemTemplate>
+                             <div class="col-md-4 product simpleCart_shelfItem text-center">
+                            <a href='Single.php?product='><img style = "width:200px; length:200px;" src='<%# Eval("Image") %>' alt="" /></a>
+                            <div class="mask">
+                            <a href='Single.php?product=<%# Eval("ID") %>'>Quick View</a>
+                            </div>
+                            <a class="product_name" href='Single.php?product=<%# Eval("ID") %>'><%# Eval("Product") %></a>
+                            <p><a class="item_add" href="#"><i></i> <span class="item_price"><%# Eval("Price") %>'</span></a></p>
+                            </div>
+                                    </ItemTemplate>
+                                </asp:DataList>
+                            
+
+		</div>
 </asp:Content>

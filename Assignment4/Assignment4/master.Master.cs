@@ -21,6 +21,7 @@ namespace Assignment4
             if(!IsPostBack)
             {
                 DisplayProductLists();
+                DisplayCategories();
                 if (Session["User"]== null)
                 {
                     hlLogout.Visible = false;
@@ -46,6 +47,13 @@ namespace Assignment4
                     lblCount.Text = Session["cartItems"].ToString();
                 }
             }
+        }
+
+        private void DisplayCategories()
+        {
+            DAL d = new DAL(conn);
+            dlCategories.DataSource = d.ExecuteProcedure("spGetCategoriesByID");
+            dlCategories.DataBind();
         }
 
         private void DisplayProductLists()

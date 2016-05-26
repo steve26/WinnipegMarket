@@ -30,7 +30,7 @@
                         <asp:DataList ID="dlBrands" runat="server">
                             <ItemTemplate>
                                 <li><a href='Products.aspx?brand=<%# Eval("Brand_ID") %>'>
-                                    <asp:Label Text='<%# Eval("Brand_Name") %>' runat="server" /></a></li>;
+                                    <asp:Label Text='<%# Eval("Brand_Name") %>' runat="server" /></a></li>
                             </ItemTemplate>
                         </asp:DataList>
 						
@@ -80,7 +80,7 @@
 						</div>
 					</div>
 					<div class="clearfix"></div>
-					<asp:DataList ID="dlProducts" runat="server">
+					<asp:DataList ID="dlProducts" runat="server" >
                         <ItemTemplate>
                             <li>
                                     <a href='Single.aspx?product=<%# Eval("ID") %>' class="cbp-vm-image">

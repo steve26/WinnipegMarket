@@ -19,18 +19,36 @@ namespace Assignment4
                 DisplayNewProducts();
                 DisplayBrands();
                 DisplaySingleProduct();
+                DisplayAllProducts();
             }
+        }
+
+        private void DisplayAllProducts()
+        {
+            DAL d = new DAL(conn);
+            dlAllProducts.DataSource = d.ExecuteProcedure("spSearchProducts");
+            dlAllProducts.DataBind();
         }
 
         private void DisplaySingleProduct()
         {
             string product = Request.QueryString["product"];
             int conv_proID = Convert.ToInt32(product);
+            if (conv_proID > 0)
+            {
+                DAL d = new DAL(conn);
+                d.AddParam("Pro_ID", conv_proID);
+                dlSingleProduct.DataSource = d.ExecuteProcedure("spSearchProducts");
+                dlSingleProduct.DataBind();
 
-            DAL d = new DAL(conn);
-            d.AddParam("Pro_ID", conv_proID);
-            dlSingleProduct.DataSource = d.ExecuteProcedure("spSearchProducts");
-            dlSingleProduct.DataBind();
+                d.AddParam("Pro_ID", conv_proID);
+                dlDescription.DataSource = d.ExecuteProcedure("spSearchProducts");
+                dlDescription.DataBind();
+            }
+            else
+            {
+                Response.Redirect("Products.aspx");
+            }
         }
 
         private void DisplayBrands()
