@@ -16,13 +16,13 @@ namespace WinnipegMarketClassLIbrary
 
         public CartItem(int productID, int quantity)
         {
-            Products myProduct = Products.GetProductsByID(productID);
-            this.Product = myProduct.Product;
-            this.Price = myProduct.Price;
-            this.Image = myProduct.Image;
-            this.Category = myProduct.Category;
-            this.Id = myProduct.Id;
-            this.Quantity = quantity;
+           // Products myProduct = Products.GetProductsByID(productID);
+           // this.Product = myProduct.Product;
+            //this.Price = myProduct.Price;
+           // this.Image = myProduct.Image;
+           // this.Category = myProduct.Category;
+          //  this.Id = myProduct.Id;
+           // this.Quantity = quantity;
             //this.ProductID = productID;
             //this.Quantity = quantity;
         }

@@ -29,7 +29,7 @@ namespace Assignment4
         {
             Security.Login(tbName.Text, tbPassword.Text);
             Users c = (Users)Session["User"];
-
+            Session["custID"] = c.Id;
             if (Session["User"] == null)
             {
                 

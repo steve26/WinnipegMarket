@@ -47,10 +47,18 @@ namespace Assignment4
 
         protected void btnCheckOut_Click(object sender, EventArgs e)
         {
-            c.Cart = SessionCart.Instance.Cart;
-            c.CheckOut(Convert.ToInt32(Session["custID"]), DateTime.Now, Convert.ToDecimal(Session["masterCartPrice"]));
-            SessionCart.AbandonCart();
-            loadGrid();
+            if (Session["User"]!= null)
+            {
+                c.Cart = SessionCart.Instance.Cart;
+                c.CheckOut(Convert.ToInt32(Session["custID"]), DateTime.Now, Convert.ToDecimal(Session["masterCartPrice"]));
+                SessionCart.AbandonCart();
+                loadGrid();
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
+            
         }
 
         protected void btnRemoveAll_Click(object sender, EventArgs e)

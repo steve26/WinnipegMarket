@@ -36,8 +36,9 @@ namespace Assignment4
                 myDAL.AddParam("Address", tbAddress.Text);
                 myDAL.ExecuteProcedure("spAddUsers");
                 clearTextBoxes();
-                lblError.Text = "An email has been sent to your inbox, click on the link in their to finish your registration.";
-            }
+                Security.Login(tbEmail.Text, tbPassword.Text);
+                Users c = (Users)Session["User"];
+            }   
             else
             {
                 lblError.Text = "The passwords did not match, try again";
